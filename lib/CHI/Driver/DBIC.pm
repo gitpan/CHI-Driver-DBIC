@@ -85,11 +85,11 @@ CHI::Driver::DBIC - The great new CHI::Driver::DBIC!
 
 =head1 VERSION
 
-Version 0.001_001
+Version 0.001_002
 
 =cut
 
-our $VERSION = '0.001_001';
+our $VERSION = '0.001_002';
 
 =head1 SYNOPSIS
 

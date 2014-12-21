@@ -1,5 +1,8 @@
 Revision history for CHI-Driver-DBIC
 
+0.001_002    21 Dec 14
+             Add missing dependencies to Makefile.PL
+
 0.001_001    Date/time
              First version, released on an unsuspecting world.
 
