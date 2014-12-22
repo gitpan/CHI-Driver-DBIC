@@ -6,7 +6,6 @@ use warnings;
 use Params::Validate qw/:all/;
 use Moose;
 extends 'CHI::Driver';
-use Data::Dumper;
 
 =head2 Attributes
 
@@ -85,11 +84,11 @@ CHI::Driver::DBIC - The great new CHI::Driver::DBIC!
 
 =head1 VERSION
 
-Version 0.001_002
+Version 0.001_003
 
 =cut
 
-our $VERSION = '0.001_002';
+our $VERSION = '0.001_003';
 
 =head1 SYNOPSIS
 

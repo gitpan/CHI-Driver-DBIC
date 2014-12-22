@@ -20,6 +20,7 @@ no_index:
 requires:
   CHI: '0'
   CHI::Driver: '0'
+  Moose: '0'
   Params::Validate: '0'
   perl: '5.008'
-version: 0.001_002
+version: 0.001_003

@@ -21,6 +21,7 @@ WriteMakefile(
 	'Params::Validate' => '0',
 	'CHI' => '0',
 	'CHI::Driver' => '0',
+	'Moose' => '0',
         #'Foo::Bar::Module' => 5.0401,
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
