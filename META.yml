@@ -1,5 +1,5 @@
 ---
-abstract: 'The great new CHI::Driver::DBIC!'
+abstract: 'DBIx::Class Driver for CHI.'
 author:
   - 'Motortrak Ltd <duncan.garland@motortrak.com>'
 build_requires:
@@ -23,4 +23,4 @@ requires:
   Moose: '0'
   Params::Validate: '0'
   perl: '5.008'
-version: 0.001_003
+version: '0.002'

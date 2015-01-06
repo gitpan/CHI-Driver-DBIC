@@ -23,8 +23,7 @@ ok( $schema->resultset('Mbfl2Session')->search( {} )->count > 0, "Found some ses
 ok(
   $chi = CHI->new(
     driver             => 'DBIC',
-    table              => 'Mbfl2Session',
-    schema             => $schema,
+    resultset          => $schema->resultset('Mbfl2Session'),
     expires_on_backend => 1,
     expires_in         => 30
   ),

@@ -7,13 +7,64 @@ use Params::Validate qw/:all/;
 use Moose;
 extends 'CHI::Driver';
 
+=head1 NAME
+
+CHI::Driver::DBIC - DBIx::Class Driver for CHI.
+
+=head1 VERSION
+
+Version 0.002
+
+=cut
+
+our $VERSION = '0.002';
+
+=head1 SYNOPSIS
+
+This module allow the CHI caching interface to use a database as a backend 
+via DBIx::Class.
+
+It implements the methods which are required by a CHI::Driver: store, fetch, 
+remove and clear. It should not be necessary to access these methods directly.
+
+It should be noted that most database supported by DBIx::Class are slower 
+than caches or NoSQL databases.
+
+=head2 Example Object Creation
+
+  $chi = CHI->new(
+    driver             => 'DBIC',
+    resultset          => $schema->resultset('Mbfl2Session'),
+    expires_on_backend => 1,
+    expires_in         => 30
+  ),
+
+=head2 Example get and set
+
+  $val = $chi->get($key);
+
+  $chi->set( $key, $val );
+
+=head2 Example Table Definition (Oracle)
+
+  SQL> desc mbfl2_sessions
+   Name                                      Null?    Type
+   ----------------------------------------- -------- ----------------------------
+   ID                                        NOT NULL VARCHAR2(72)
+   SESSION_DATA                                       BLOB
+   EXPIRES                                            NUMBER
+
+=head1 EXPORT
+
+Nothing.
+
+=head1 METHODS
+
+=cut
+
 =head2 Attributes
 
 =over 
-
-=item schema
-
-The DBIx::Class schema
 
 =item resultset
 
@@ -39,7 +90,6 @@ Defaults to:
 
 =cut
 
-# has 'schema' => ( 'is' => 'ro', 'isa' => 'Object', 'required' => 1 );
 has 'resultset' => ( 'is' => 'ro', 'isa' => 'Object', 'required' => 1 );
 has 'expiry_calc_in' => (
   'is'    => 'ro',
@@ -77,38 +127,6 @@ has '_rs' => (
   'lazy'    => 1,
   'default' => sub { my $self = shift; $self->resultset; }
 );
-
-=head1 NAME
-
-CHI::Driver::DBIC - The great new CHI::Driver::DBIC!
-
-=head1 VERSION
-
-Version 0.001_003
-
-=cut
-
-our $VERSION = '0.001_003';
-
-=head1 SYNOPSIS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use CHI::Driver::DBIC;
-
-    my $foo = CHI::Driver::DBIC->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
-=head1 SUBROUTINES/METHODS
-
-=cut
 
 =head2 store
 
@@ -170,9 +188,6 @@ Motortrak Ltd, C<< <duncan.garland at motortrak.com> >>
 Please report any bugs or feature requests to C<bug-chi-driver-dbic at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=CHI-Driver-DBIC>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
-
 
 =head1 SUPPORT
 

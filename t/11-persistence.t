@@ -1,7 +1,8 @@
 #!perl 
 use 5.006;
 use strict;
-use warnings FATAL      => 'all';
+use warnings FATAL => 'all';
+
 use Test::More skip_all => "Needs hardcoded schema details.";
 use MotorTRAK::MBFL2::TestUtils qw/get_schema get_mlogger /;
 
@@ -26,8 +27,7 @@ ok( $schema->resultset('Mbfl2Session')->search( {} )->count > 0, "Found some ses
 ok(
   $chi = CHI->new(
     driver             => 'DBIC',
-    table              => 'Mbfl2Session',
-    schema             => $schema,
+    resultset          => $schema->resultset('Mbfl2Session'),
     expires_on_backend => 1,
     expires_in         => 30
   ),
